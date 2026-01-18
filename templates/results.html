@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+
+    <h2>Laptop Results</h2>
+
+    <table border = "1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>RAM</th>
+            <th>Price</th>
+        </tr>
+
+        {% for i in result %}
+        <tr>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
