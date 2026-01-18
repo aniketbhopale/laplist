@@ -11,7 +11,7 @@ def findlaptop():
     if request.method == 'POST':
         RAM = request.form['RAM']
         price = request.form['price']
-        query = " Select * from Laplist where RAM = %s and price <= %s"
+        query = " Select * from Laplist where ram = %s and price <= %s"
         cursor.execute(query,(RAM, price))
         result = cursor.fetchall()
         return render_template('results.html', result=result)
@@ -19,3 +19,5 @@ def findlaptop():
 
 if __name__ == '__main__':
     app.run(debug=True)   
+
+
