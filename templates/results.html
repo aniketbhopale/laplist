@@ -1,29 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Results</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Laptop Search</title>
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; background-color: #f4f6f9; display: flex; justify-content: center; align-items: flex-start; min-height: 90vh; margin: 0; padding: 40px 16px; box-sizing: border-box;">
 
-    <h2>Laptop Results</h2>
+    <div style="background: #ffffff; padding: 28px 32px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); width: 100%; max-width: 650px;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="margin: 0; color: #222; font-size: 22px;">💻 Available Laptops</h2>
+            <a href="/" style="text-decoration: none; font-size: 14px; color: #0066cc; font-weight: bold;">← New Search</a>
+        </div>
 
-    <table border = "1">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>RAM</th>
-            <th>Price</th>
-        </tr>
+        {% if result %}
+        <div style="overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 8px;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+                <thead>
+                    <tr style="background-color: #f8fafc; color: #475569; border-bottom: 2px solid #e2e8f0;">
+                        <th style="padding: 12px 16px;">ID</th>
+                        <th style="padding: 12px 16px;">Model / Name</th>
+                        <th style="padding: 12px 16px;">RAM</th>
+                        <th style="padding: 12px 16px;">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in result %}
+                    <tr style="border-bottom: 1px solid #f1f5f9; background-color: {{ '#ffffff' if loop.index is odd else '#fafafa' }};">
+                        <td style="padding: 12px 16px; color: #64748b; font-weight: 500;">#{{ i[0] }}</td>
+                        <td style="padding: 12px 16px; color: #1e293b; font-weight: 600;">{{ i[1] }}</td>
+                        <td style="padding: 12px 16px; color: #334155;">{{ i[2] }} GB</td>
+                        <td style="padding: 12px 16px; color: #0f766e; font-weight: 600;">${{ i[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div style="text-align: center; padding: 40px 20px; background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px;">
+            <p style="margin: 0 0 12px; color: #64748b; font-size: 15px;">No laptops matched your criteria.</p>
+            <a href="/" style="display: inline-block; padding: 8px 16px; background-color: #0066cc; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 600;">Try Different Filters</a>
+        </div>
+        {% endif %}
 
-        {% for i in result %}
-        <tr>
-            <td>{{ i[0] }}</td>
-            <td>{{ i[1] }}</td>
-            <td>{{ i[2] }}</td>
-            <td>{{ i[3] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    </div>
 
 </body>
 </html>
